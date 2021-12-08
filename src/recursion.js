@@ -57,12 +57,76 @@ var factorial = function(n) {  // 5
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+  // I an array of numbers, could be positive or negative numbers
+  // O a number
+  // C not an array of numbers?
+  // E should return 0 for empty array
+
+  // if is an array and length is 0
+    //return 0
+  // if array length is 1
+    // return first index
+  // return array at index 0 plus sum of copy of array
+
+  if (array.length === 0) {
+    return 0;
+  }
+  if (array.length === 1) {
+    return array[0];
+  }
+  return array[0] + sum(array.slice(1));
 };
+
+// array = [1,2,3,4,5,6]
+// 1
+// 1 += sum([2, 3, 4, 5, 6])
+
+// 2 + sum([3, 4, 5, 6])
+
+// 3 + sum([4, 5, 6])
+
+// 4 + sum([5, 6])
+
+// 5 + sum([6])
+
+// 6 + sum([])
+
+
+
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+  // I an array of numbers, could be positive or negative numbers, nested arrays
+  // O a number
+  // C not an array of numbers?
+  // E should return 0 for empty array
+
+  // if array length is 0
+    //return 0
+  // create result
+  // if array is not an array
+    // return
+  // iterate over array
+    // increment result with current
+  if (Array.isArray(array) && array.length === 0) {
+    return 0;
+  }
+  var result = 0;
+  if (!Array.isArray(array)) {
+    return array;
+  }
+  array.forEach(function(input) {  // 4
+    result += arraySum(input);  //arraysum(4)
+  });
+  return result;
 };
+
+// result = 0
+// 0 += 1
+// result = 1
+
+
 
 // 4. Check if a number is even.
 var isEven = function(n) {
