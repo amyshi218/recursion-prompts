@@ -130,17 +130,129 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  // I a number
+  // O a boolan
+  // C not a number? should not use modulo
+  // E if n is 0 return true
+
+  // get absolute value of n
+
+  // base case
+  // if n is 0 return true
+    // otherwise is n is 1
+      //return false
+
+  // decrement n by invoke isEven with n decrement by 2
+  n = Math.abs(n); //n = 17
+  var result = n;
+  if (n === 0) {
+    return true;
+  }
+  if (n === 1) {
+    return false;
+  }
+
+  return isEven(n-2);  // 17 - isEven(15)
 };
+
+// 15 - isEven(13)
+// 13 - isEven(11)
+// 11 - isEven(9)
+// 9 - isEven(7)
+// 7 - isEven(5) 4
+// 5 - isEven(3) 2
+// 3 - isEven(1)
+
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  // I a number could be positive or negative
+  // O sum of all numbers less than n
+  // C
+  // E
+
+  // create accumulator?
+  // if n is 0
+    // return 0
+
+  if (n === 0) {  //n = 4
+    return 0;
+  }
+  if (n > 0){
+    return n - 1 + sumBelow(n - 1);
+  } else {
+    return n + 1 + sumBelow(n + 1);
+  }
 };
+
+
+
+// 3 + sumbelow(3) = 3
+// 2 + sumBelow(2) = 2
+// 1 + sumBelow(1) = 1
+// 0 + sumBelow(0) = 0
+
+
+
+
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  // I two integers
+  // O an array of numbers between x and y
+  // C
+  // E if x and y are the same, return empty array, if y is one more than x, return empty array
+
+  // if x is equal to y
+    //return empty array
+  //if absolute value of difference between x and y is 1
+    //return empty array
+
+  //create result
+
+  //if y is greater than x
+    //if x is equal to y minus 1
+      //push x to result
+    // invoke range with x increment by 1
+      //push x to result
+  //else
+    //if y is equal to x minus 1
+      //push y to result
+    //invoke range with x decrement by 1
+      //push x to result
+
+  //return result
+
+  if (x === y) {
+    return [];
+  }
+  if (Math.abs(x-y) === 1) {
+    return [];
+  }
+
+  var result = [];
+
+  if (y > x) {
+    if (x === y - 1) {
+      result.push(x);
+    }
+
+    range(x + 1, y);
+    result.push(x +1);
+
+  } else {
+
+    if (y === x - 1) {
+      result.push(x);
+    }
+    range(x - 1, y);
+    result.push(x + 1);
+
+  }
+  return result;
 };
 
 // 7. Compute the exponent of a number.
